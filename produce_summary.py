@@ -1,42 +1,22 @@
 
-print("Day 1")
-daily_delivery_report = open("um-deliveries-20140519.txt")
-for item in daily_delivery_report:
-    item = item.rstrip()
-    words = item.split('|')
+def produce_summary_report(report_location):
+    print(report_location[12:20])
+    delivery_report = open(report_location)
+    for item in delivery_report:
+        item = item.rstrip()
+        relevant_report_values = item.split('|')
 
-    melon = words[0]
-    count = words[1] 
-    amount = words[2]
+        melon = relevant_report_values[0]
+        count = relevant_report_values[1] 
+        price = relevant_report_values[2]
 
-    print(f"Delivered {count} {melon}s for a total of ${amount}.")
-daily_delivery_report.close()
-
-
-print("Day 2")
-daily_delivery_report = open("um-deliveries-20140520.txt")
-for item in daily_delivery_report:
-    item = item.rstrip()
-    words = item.split('|')
-
-    melon = words[0]
-    count = words[1]
-    amount = words[2]
-
-    print(f"Delivered {count} {melon}s for a total of ${amount}.")
-daily_delivery_report.close()
+    print(f"Delivered {count} {melon}s for a total of ${price}.")
+    delivery_report.close()
 
 
-print("Day 3")
-daily_delivery_report = open("um-deliveries-20140521.txt")
-for item in daily_delivery_report:
-    item = item.rstrip()
-    words = item.split('|')
-
-    melon = words[0]
-    count = words[1]
-    amount = words[2]
-
-    print(f"Delivered {count} {melon}s for a total of ${amount}.")
-daily_delivery_report.close()
-
+print("Day1")
+produce_summary_report("um-deliveries-20140519.txt")
+print("Day2")
+produce_summary_report("um-deliveries-20140520.txt")
+print("Day3")
+produce_summary_report("um-deliveries-20140521.txt")
